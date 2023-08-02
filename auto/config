@@ -1,0 +1,22 @@
+#!/bin/sh
+
+lb config noauto \
+	--apt apt \
+	--architectures amd64 \
+	--apt-recommends false \
+	--binary-images iso \
+	--binary-filesystem ext4 \
+	--bootloader grub \
+	--bootstrap debootstrap \
+	--bootstrap-flavour minimal \
+	--build-with-chroot true \
+	--chroot-filesystem ext4 \
+	--debian-installer cdrom \
+	--debian-installer-gui false \
+	--distribution bullseye \
+	--initramfs casper \
+	--iso-application "Custom Debian RT" \
+	--iso-volume "debian-"$(date +%Y%m%d) \
+	--mode debian \
+	--system normal
+	"${@}"
